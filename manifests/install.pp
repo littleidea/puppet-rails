@@ -2,7 +2,7 @@ define rails::install($servername) {
     file{ "/var/www":
           ensure => directory,
           owner => root,
-          group => www-date,
+          group => www-data,
           mode => 775
     }
 
@@ -12,7 +12,8 @@ define rails::install($servername) {
         cwd => "/var/rails",
         user => www-data,
         creates => "/var/rails/$name/config",
-        alias => rails-create
+        alias => rails-create,
+        requires => File['/var/www']
     }
 
     # Now create the db config
