@@ -1,14 +1,18 @@
-<% raise(ArgumentError, "Unsupported database type %s" % dbtype) unless ["postgresql"].include?(dbtype) %>
-<% environments.each do |env| %>
-<%= env %>:
-  adapter: <%= dbtype %>
-  database: <%= name %>_<%= env %>
-<% if dbuser %>
-  username: <%= dbuser %>
-  password: <%= dbpassword %>
-<% end %>
-<% if dbserver %>
-  host: <%= dbserver %>
-<% end %>
+login: &login
+adapter: mysql
+username: root 
+password:
+socket: /var/run/mysqld/mysqld.sock
 
-<% end %>
+development:
+<<: *login
+database: <%= name %>_development
+
+test:
+<<: *login
+database: <%= name %>_test
+
+production:
+<<: *login
+database: <%= name %>_production 
+
