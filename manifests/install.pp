@@ -23,7 +23,7 @@ define rails::install($servername) {
 
     file { "/etc/apache2/sites-available/$name":
         content => template("rails/vhost.erb"),
-        require => Class['apache2'],
+        require => Package['apache2'],
         alias => vhost
     }
 
