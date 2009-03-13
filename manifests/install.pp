@@ -13,7 +13,7 @@ define rails::install($servername) {
         user => www-data,
         creates => "/var/rails/$name/config",
         alias => rails-create,
-        require => File['/var/www']
+        require => File['/var/rails']
     }
 
     # Now create the db config
