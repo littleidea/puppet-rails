@@ -1,9 +1,9 @@
 define rails::install($servername) {
     file{ "/var/rails":
           ensure => directory,
-          owner => root,
+          owner => www-data,
           group => www-data,
-          mode => 775
+          mode => 755
     }
 
     # Create the system
