@@ -13,7 +13,7 @@ define rails::site($servername = $fqdn, $rails_version) {
 
     rails::setup { $name:
         version => $rails_version,
-        require => Class['gems']
+        require => [Class['gems'], Package['mysql']]
     }
 
     rails::install { $name:
