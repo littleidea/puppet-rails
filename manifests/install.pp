@@ -8,7 +8,7 @@ define rails::install($servername) {
 
     # Create the system
     exec { "Create $name rails site":
-        command => "/usr/bin/rails $name",
+        command => "/usr/bin/rails /var/rails/$name",
         cwd => "/var/rails",
         user => www-data,
         creates => "/var/rails/$name/config",
