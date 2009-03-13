@@ -1,5 +1,5 @@
 define rails::install($servername) {
-    file{ "/var/www":
+    file{ "/var/rails":
           ensure => directory,
           owner => root,
           group => www-data,
