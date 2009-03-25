@@ -6,7 +6,8 @@ define rails::site($servername = $fqdn, $rails_version) {
 
     include mysql
     mysql::database { ["${name}_test", "${name}_production", "${name}_development"]:
-        ensure => present
+        ensure => present,
+        require => Class['mysql']
     }
 
     include ruby::mysql
