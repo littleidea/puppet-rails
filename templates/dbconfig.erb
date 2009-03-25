@@ -1,18 +1,18 @@
 login: &login
-adapter: mysql
-username: root 
-password:
-socket: /var/run/mysqld/mysqld.sock
+ adapter: mysql
+ username: root
+ password:
+ socket: /var/run/mysqld/mysqld.sock
 
 development:
-<<: *login
-database: <%= name %>_development
+ <<: *login
+ database: <%= name %>_development
 
 test:
-<<: *login
-database: <%= name %>_test
+ <<: *login
+ database: <%= name %>_test
 
 production:
-<<: *login
-database: <%= name %>_production 
+ <<: *login
+ database: <%= name %>_production
 
